@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8558394568481334219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8388327548688220851}
+  - component: {fileID: 937909206472383780}
+  m_Layer: 0
+  m_Name: Lane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8388327548688220851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558394568481334219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &937909206472383780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558394568481334219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f8c69f0219b8b4eb07c9bf8076c6bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnYPos: 15
+  carSpawnFrequency: 5
+  maxFrequencyVariation: 3
+  roadPieceHeight: 11.2
+  numOfRoadPieces: 3
+  roadPieceInstantiationYPos: 20
+  carLimitOnLane: 10
+  spawnableItems:
+  - {fileID: 11400000, guid: 61de85a17ece5f841899c75ba901ec2f, type: 2}
+  - {fileID: 11400000, guid: 98c7237375f09ce46a60c2aca73b11c1, type: 2}
+  - {fileID: 11400000, guid: 0abc2e71ba9be1048bdff9ec399ab23e, type: 2}
+  - {fileID: 11400000, guid: a16a9acecb7d6ef45a67d28ae6c96a62, type: 2}
+  - {fileID: 11400000, guid: eecd2ecc64d8df8408d62aaf2849fbd3, type: 2}
+  maxItemsSpawnCooldown: 20
+  minItemsSpawnCooldown: 2
+  roadPiecePrefab: {fileID: 5509156682160852218, guid: 3a4b94f7b4249724493ad1fb4b61dd3a,
+    type: 3}
+  carPrefab: {fileID: 4805283563264113055, guid: 80f4bf2cb4c26344a817ef7beb529589,
+    type: 3}
+  droppedItemPrefab: {fileID: 5368991832513300943, guid: 698db0867acc11d499ae94c3e9c0af35,
+    type: 3}
