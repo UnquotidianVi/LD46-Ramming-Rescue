@@ -8,6 +8,11 @@ public class Lane : MonoBehaviour
     public List<Car> Cars { get { return cars; } set { cars = value; } }
 
     [SerializeField]
+    private bool spawnCars;
+    [SerializeField]
+    private bool spawnItems;
+
+    [SerializeField]
     private float spawnYPos;
     [SerializeField]
     private float carSpawnFrequency;
@@ -36,34 +41,39 @@ public class Lane : MonoBehaviour
     [SerializeField]
     private GameObject droppedItemPrefab;
 
-    private float lastTimeCarWasSpawned;
+    private float lastDistanceCarWasSpawnedAt;
     private float lastTimeItemWasSpawned;
     private float itemSpawnCooldown;
     private float xPos;
     private List<Car> cars = new List<Car>();
     private HighwayManager highwayManager;
     private List<GameObject> roadpieces = new List<GameObject>();
+    private GameManager gameManager;
 
     private void Start()
     {
         highwayManager = FindObjectOfType<HighwayManager>();
+        gameManager = FindObjectOfType<GameManager>();
         itemSpawnCooldown = Random.Range(minItemsSpawnCooldown, maxItemsSpawnCooldown);
-        SpawnCar();
+        if(spawnCars)
+            SpawnCar();
         InstantiateRoadPieces();
     }
 
     private void Update()
     {
-        CheckForSpawnChances();
+        if(gameManager.CurrentGameState == GameManager.GameState.Driving || gameManager.CurrentGameState == GameManager.GameState.Paramedic)
+            CheckForSpawnChances();
+        if(roadpieces.Count != 0)
         UpdateRoadPieces();
     }
 
     private void CheckForSpawnChances()
     {
-        if (lastTimeCarWasSpawned + carSpawnFrequency < Time.time)
+        if (lastDistanceCarWasSpawnedAt - carSpawnFrequency > gameManager.MetersToHospital && spawnCars)
             if (IsSpawnPointFree())
                 SpawnCar();
-        if (lastTimeItemWasSpawned + itemSpawnCooldown < Time.time)
+        if (lastTimeItemWasSpawned + itemSpawnCooldown < Time.time && spawnItems)
             SpawnDroppedItem();
     }
 
@@ -74,7 +84,7 @@ public class Lane : MonoBehaviour
         car.Speed = highwayManager.AverageSpeed + Random.Range(-highwayManager.SpeedVariation, highwayManager.SpeedVariation);
         Cars.Add(car);
         car.transform.SetParent(gameObject.transform);
-        lastTimeCarWasSpawned = Time.time + Random.Range(-maxFrequencyVariation, maxFrequencyVariation);
+        lastDistanceCarWasSpawnedAt = gameManager.MetersToHospital + Random.Range(-maxFrequencyVariation, maxFrequencyVariation);
 
         if (cars.Count > carLimitOnLane)
         {
@@ -88,7 +98,7 @@ public class Lane : MonoBehaviour
     {
         for (int i = 0; i < cars.Count; i++)
         {
-            if (Mathf.Abs(spawnYPos - cars[i].transform.position.y) < 10)
+            if (Mathf.Abs(spawnYPos - cars[i].transform.position.y) < 20)
                 return false;
         }
         return true;

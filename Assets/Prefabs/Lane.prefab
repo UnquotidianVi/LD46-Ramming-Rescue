@@ -43,12 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f8c69f0219b8b4eb07c9bf8076c6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnCars: 1
+  spawnItems: 1
   spawnYPos: 15
-  carSpawnFrequency: 5
-  maxFrequencyVariation: 3
+  carSpawnFrequency: 100
+  maxFrequencyVariation: 50
   roadPieceHeight: 11.2
-  numOfRoadPieces: 3
-  roadPieceInstantiationYPos: 20
+  numOfRoadPieces: 2
+  roadPieceInstantiationYPos: 17
   carLimitOnLane: 10
   spawnableItems:
   - {fileID: 11400000, guid: 61de85a17ece5f841899c75ba901ec2f, type: 2}
@@ -56,8 +58,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0abc2e71ba9be1048bdff9ec399ab23e, type: 2}
   - {fileID: 11400000, guid: a16a9acecb7d6ef45a67d28ae6c96a62, type: 2}
   - {fileID: 11400000, guid: eecd2ecc64d8df8408d62aaf2849fbd3, type: 2}
-  maxItemsSpawnCooldown: 20
-  minItemsSpawnCooldown: 2
+  maxItemsSpawnCooldown: 17
+  minItemsSpawnCooldown: 7
   roadPiecePrefab: {fileID: 5509156682160852218, guid: 3a4b94f7b4249724493ad1fb4b61dd3a,
     type: 3}
   carPrefab: {fileID: 4805283563264113055, guid: 80f4bf2cb4c26344a817ef7beb529589,

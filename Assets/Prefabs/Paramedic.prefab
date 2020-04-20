@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131183007351227442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2131183007916538670}
@@ -49,7 +49,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70,12 +70,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 84fbf4cfefc71ae408790a20900f9bc1, type: 3}
-  m_Color: {r: 0.5801887, g: 1, b: 0.60651, a: 1}
+  m_Sprite: {fileID: 21300000, guid: edf2aa0f25818c74ea2c203a56d5b812, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -93,6 +93,8 @@ GameObject:
   - component: {fileID: 2131183007916538659}
   - component: {fileID: 2131183007916538668}
   - component: {fileID: 2131183007916538669}
+  - component: {fileID: 1596822729}
+  - component: {fileID: 1596822730}
   m_Layer: 0
   m_Name: Paramedic
   m_TagString: Untagged
@@ -162,3 +164,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionChecker: {fileID: 2131183007916538668}
   speed: 10
+  spriteRenderer: {fileID: 2131183007351227440}
+  animator: {fileID: 0}
+--- !u!114 &1596822729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131183007916538671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ae59e03a9400f46a9aacc48ab9f6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: Test
+  howeringTextObject: {fileID: 0}
+  visibleGameState: 1
+  gameManager: {fileID: 0}
+  offsetFromObject: {x: 0, y: 1.5}
+  textFadeoutTime: 0.2
+--- !u!114 &1596822730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131183007916538671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f18179fe4a80904f9f9e1ac4554e063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionChecker: {fileID: 2131183007916538668}
+  paramedicController: {fileID: 2131183007916538669}

@@ -12,12 +12,17 @@ public class DroppedItem : MonoBehaviour
     private float speed;
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private GameManager gameManager;
 
     private AmbulanceController ambulanceController;
 
     private void Start()
     {
         ambulanceController = FindObjectOfType<AmbulanceController>();
+        gameManager = FindObjectOfType<GameManager>();
+        if (gameManager.MetersToHospital > myItem.requiredMetersFromHospital)
+            Destroy(gameObject);
         if (myItem.sprite != null)
             spriteRenderer.sprite = myItem.sprite;
     }
@@ -35,4 +40,5 @@ public class DroppedItem : MonoBehaviour
         if(transform.position.y + 10 < ambulanceController.transform.position.y)
             Destroy(gameObject);
     }
+
 }

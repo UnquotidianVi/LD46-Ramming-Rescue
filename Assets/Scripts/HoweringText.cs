@@ -42,8 +42,11 @@ public class HoweringText : MonoBehaviour
 
     private void UpdateTextPositionOnScreen()
     {
-        Vector2 textPositionOnScreen = Camera.main.WorldToScreenPoint(new Vector2(transform.position.x + offsetFromObject.x, transform.position.y + offsetFromObject.y));
-        howeringTextObject.gameObject.transform.position = textPositionOnScreen;
+        if(Camera.main != null)
+        {
+            Vector2 textPositionOnScreen = Camera.main.WorldToScreenPoint(new Vector2(transform.position.x + offsetFromObject.x, transform.position.y + offsetFromObject.y));
+            howeringTextObject.gameObject.transform.position = textPositionOnScreen;
+        } 
     }
 
     private void UpdateTextVisibility()

@@ -6,10 +6,25 @@ public class ParamedicInteract : MonoBehaviour
 {
     [SerializeField]
     private CollisionChecker collisionChecker;
+    [SerializeField]
+    private ParamedicController paramedicController;
+
+    bool inputsEnabledLastFrame;
 
     private void Update()
     {
-        CheckForInteractableObjects();
+        if (paramedicController.InputsEnabled)
+        {
+            if (inputsEnabledLastFrame)
+                CheckForInteractableObjects();
+            else
+                inputsEnabledLastFrame = true;
+        }
+        else
+        {
+            inputsEnabledLastFrame = false;
+        }
+            
     }
 
     private void CheckForInteractableObjects()

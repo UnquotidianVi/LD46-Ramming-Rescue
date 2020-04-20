@@ -16,12 +16,14 @@ public class Car : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private HighwayManager highwayManager;
+    private GameManager gameManager;
     private AmbulanceController ambulanceController;
 
     private void Start()
     {
         highwayManager = FindObjectOfType<HighwayManager>();
         ambulanceController = FindObjectOfType<AmbulanceController>();
+        gameManager = FindObjectOfType<GameManager>();
         spriteRenderer.sprite = carSprites[Random.Range(0, carSprites.Count)];
     }
 
@@ -29,6 +31,9 @@ public class Car : MonoBehaviour
     {
         UpdatePosition();
         CheckCollisions();
+
+        if (gameManager.CurrentGameState == GameManager.GameState.Win)
+            transform.Translate(new Vector2(0, 3 * Time.deltaTime));
     }
 
     private void UpdatePosition()
@@ -43,6 +48,21 @@ public class Car : MonoBehaviour
 
         for (int i = 0; i < frontCollisions.Count; i++)
             if(frontCollisions[i] != this.gameObject)
-                speed = frontCollisions[i].GetComponent<Car>().Speed;
+            {
+                Car otherCar = frontCollisions[i].GetComponent<Car>();
+                if (otherCar.Speed < speed)
+                    otherCar.Speed = speed;
+            }
+                
+
+        frontCollisions = collisionChecker.CheckForCollisions(Vector2.up, "Player", 2f);
+
+        for (int i = 0; i < frontCollisions.Count; i++)
+        {
+            AmbulanceController ambulanceController = frontCollisions[i].GetComponent<AmbulanceController>();
+            if (ambulanceController.Speed < speed)
+                speed = ambulanceController.Speed;
+        }
+                
     }
 }
